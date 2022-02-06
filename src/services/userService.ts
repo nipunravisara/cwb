@@ -23,7 +23,6 @@ export async function createUser(
       success: false,
       status: 409,
       message: 'User already exist.',
-      data: null,
     };
   }
 
@@ -45,7 +44,6 @@ export async function createUser(
       success: false,
       status: 404,
       message: error.message,
-      data: error,
     };
   }
 }
@@ -61,7 +59,6 @@ export async function signInUser(
       status: 401,
       message:
         'No account is associate with enterd email, Try creating account.',
-      data: null,
     };
   }
 
@@ -75,18 +72,17 @@ export async function signInUser(
       success: false,
       status: 401,
       message: 'Invalid password, Try again.',
-      data: null,
     };
   }
 
-  const token = generateJwtToken(currentUser);
+  const accessToken = generateJwtToken(currentUser);
   const refreshToken = generateRefreshToken(currentUser);
 
   const user = {
     userId: currentUser.id,
     userName: `${currentUser.firstName} ${currentUser.lastName}`,
     userEmail: currentUser.email,
-    token,
+    accessToken,
     refreshToken,
   };
 
