@@ -10,6 +10,7 @@ import generateJwtToken from '../utils/generateJwtToken';
 import User from '../models/userModel';
 import getHashedPassword from '../utils/getHashedPassword';
 import validatePassword from '../utils/validatePassword';
+import generateRefreshToken from '../utils/generateRefreshToken';
 
 // Create new user
 export async function createUser(
@@ -79,12 +80,14 @@ export async function signInUser(
   }
 
   const token = generateJwtToken(currentUser);
+  const refreshToken = generateRefreshToken(currentUser);
 
   const user = {
     userId: currentUser.id,
     userName: `${currentUser.firstName} ${currentUser.lastName}`,
     userEmail: currentUser.email,
     token,
+    refreshToken,
   };
 
   return {
