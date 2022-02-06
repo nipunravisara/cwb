@@ -6,7 +6,7 @@ export interface ReturnType<T> {
   success: boolean;
   status: number;
   message: string;
-  data: T | string | null;
+  data?: T;
 }
 
 // User create
@@ -27,7 +27,7 @@ export interface LoginUserReturnType {
   userId: string;
   userName: string;
   userEmail: string;
-  token: string;
+  accessToken: string;
   refreshToken: string;
 }
 
