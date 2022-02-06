@@ -6,19 +6,14 @@ async function logInController(req: Request, res: Response): Promise<Response> {
   const response = await signInUser(userCredentials);
 
   if (response.success === true && response.data !== undefined) {
-    const { accessToken, refreshToken, ...userData } = response.data;
-
-    res.cookie('accessToken', accessToken, {
-      maxAge: 30000,
-      httpOnly: true,
-    });
+    const { refreshToken, ...userData } = response.data;
 
     res.cookie('refreshToken', refreshToken, {
       maxAge: 3.154e10,
       httpOnly: true,
     });
 
-    return res.status(response.status).json(userData);
+    return res.status(response.status).json({ ...response, data: userData });
   }
 
   return res.status(response.status).json(response);
