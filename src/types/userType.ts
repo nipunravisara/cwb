@@ -28,6 +28,7 @@ export interface LoginUserReturnType {
   userName: string;
   userEmail: string;
   token: string;
+  refreshToken: string;
 }
 
 export interface UserDocument extends CreateUserInput, Document {
