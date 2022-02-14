@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { UserDocument } from '../types/userType';
 
-function generateRefreshToken(user: UserDocument): string {
+function signRefreshToken(user: UserDocument): string {
   return jwt.sign(
     {
       id: user.id,
@@ -10,9 +10,9 @@ function generateRefreshToken(user: UserDocument): string {
     },
     process.env.REFRESH_TOKEN_SECRET_KEY as string,
     {
-      expiresIn: '1m',
+      expiresIn: '1y',
     }
   );
 }
 
-export default generateRefreshToken;
+export default signRefreshToken;

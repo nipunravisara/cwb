@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { UserDocument } from '../types/userType';
 
-function generateJwtToken(user: UserDocument): string {
+function signJwtToken(user: UserDocument): string {
   return jwt.sign(
     {
       id: user.id,
@@ -15,4 +15,4 @@ function generateJwtToken(user: UserDocument): string {
   );
 }
 
-export default generateJwtToken;
+export default signJwtToken;

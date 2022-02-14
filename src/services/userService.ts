@@ -5,12 +5,12 @@ import {
   LoginUserReturnType,
   ReturnType,
 } from 'src/types/userType';
-import generateJwtToken from '../utils/generateJwtToken';
+import signJwtToken from '../utils/signJwtToken';
 
 import User from '../models/userModel';
 import getHashedPassword from '../utils/getHashedPassword';
 import validatePassword from '../utils/validatePassword';
-import generateRefreshToken from '../utils/generateRefreshToken';
+import signRefreshToken from '../utils/signRefreshToken';
 
 // Create new user
 export async function createUser(
@@ -48,6 +48,7 @@ export async function createUser(
   }
 }
 
+// sign in user
 export async function signInUser(
   userCredentials: LoginUserInput
 ): Promise<ReturnType<LoginUserReturnType>> {
@@ -75,8 +76,8 @@ export async function signInUser(
     };
   }
 
-  const accessToken = generateJwtToken(currentUser);
-  const refreshToken = generateRefreshToken(currentUser);
+  const accessToken = signJwtToken(currentUser);
+  const refreshToken = signRefreshToken(currentUser);
 
   const user = {
     userId: currentUser.id,
