@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { SignUpSchema } from 'src/schemas/signUpSchema';
 import { SignInSchema } from 'src/schemas/signInSchema';
 import { SchemaOf } from 'yup';
-import { RefreshTokenShema } from 'src/schemas/refreshTokenSchema';
+import { RefreshTokenShema } from 'src/schemas/validateRefreshTokenSchema';
 
 interface IvalidateRequestProps {
   type?: string;

@@ -1,8 +1,8 @@
 import { Express } from 'express';
-import Authentication from './authentication';
+import authentication from './authentication';
 
 function routes(app: Express): void {
-  app.use('/api/auth', Authentication);
+  app.use('/api/auth', authentication);
 }
 
 export default routes;

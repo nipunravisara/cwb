@@ -10,7 +10,7 @@ export interface ReturnType<T> {
 }
 
 // User create
-export interface CreateUserInput {
+export interface SignUpUserInput {
   firstName: string;
   lastName: string;
   email: string;
@@ -31,7 +31,7 @@ export interface LoginUserReturnType {
   refreshToken: string;
 }
 
-export interface UserDocument extends CreateUserInput, Document {
+export interface UserDocument extends SignUpUserInput, Document {
   id: string;
   createdAt: Date;
   updatedAt: Date;
