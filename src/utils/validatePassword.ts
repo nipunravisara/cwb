@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { UserDocument } from 'src/types/userType';
+import { UserDocument } from '../models/userModel';
 
 async function validatePassword(
   user: UserDocument,

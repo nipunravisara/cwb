@@ -9,26 +9,19 @@ dotenv.config();
 
 const app = express();
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
-app.use((_req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.setHeader(
-    'Access-Control-Allow-Methods',
-    'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-  );
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-Requested-With,content-type'
-  );
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-});
+app.use(cors(corsOptions));
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, async () => {
   routes(app);
-  database();
+  await database();
   // eslint-disable-next-line no-console
   console.log(`✅ Server is up and running on port ${process.env.PORT}`);
 });

@@ -1,12 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
-import { SignUpSchema } from 'src/schemas/signUpSchema';
-import { SignInSchema } from 'src/schemas/signInSchema';
 import { SchemaOf } from 'yup';
-import { RefreshTokenShema } from 'src/schemas/validateRefreshTokenSchema';
+import {
+  SignUpSchemaType,
+  SignInSchemaType,
+  RefreshTokenShemaType,
+} from '../schemas';
 
 interface IvalidateRequestProps {
   type?: string;
-  schema: SchemaOf<SignInSchema | SignUpSchema | RefreshTokenShema>;
+  schema: SchemaOf<SignUpSchemaType | SignInSchemaType | RefreshTokenShemaType>;
 }
 
 function validateRequest({ type, schema }: IvalidateRequestProps) {

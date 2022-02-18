@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { UserDocument } from '../types/userType';
+import { UserDocument } from '../models/userModel';
 
 function signRefreshToken(user: UserDocument): string {
   return jwt.sign(
